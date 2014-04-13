@@ -81,18 +81,18 @@
 				<button class="span unselected" value="20140413">Tomorrow</button>
 				<button class="span unselected" value="20140414">Monday</button>
 				<div id="20140412" class="selectedDate">
-					<button class="unchecked" type="button"><img src="TimePageItems/Early-Morning-Button.png"></button>
+					<button id="haha" class="unchecked" type="button" onclick ="selectTime()"><img src="TimePageItems/Early-Morning-Button.png"></button>
 					<button class="unchecked" type="button"><img src="TimePageItems/Late-Morning-Button.png"></button>
 					<button class="unchecked" type="button"><img src="TimePageItems/Early-Afternoon.png"></button>	
-					<button id="earlyMorning" class="unchecked" type="button"><img src="TimePageItems/Late-Afternoon.png"></button>
+					<button class="unchecked" type="button"><img src="TimePageItems/Late-Afternoon.png"></button>
 					<button class="unchecked" type="button"><img src="TimePageItems/Evening-Button.png"></button>
 					<button class="unchecked" type="button"><img src="TimePageItems/Night-Button.png"></button>	
 				</div>
 				<div id="20140413" class="unselectedDate">
-					<button class="unchecked" type="button"><img src="TimePageItems/Early-Morning-Button.png"></button>
-					<button class="unchecked" type="button"><img src="TimePageItems/Late-Morning-Button.png"></button>
+					<button class="unchecked" type="button" onclick ="selectTime()"><img src="TimePageItems/Early-Morning-Button.png"></button>
+					<button class="unchecked" type="button" onclick ="selectTime()"><img src="TimePageItems/Late-Morning-Button.png"></button>
 					<button class="unchecked" type="button"><img src="TimePageItems/Early-Afternoon.png"></button>	
-					<button id="earlyMorning" class="unchecked" type="button"><img src="TimePageItems/Late-Afternoon.png"></button>
+					<button class="unchecked" type="button"><img src="TimePageItems/Late-Afternoon.png"></button>
 					<button class="unchecked" type="button"><img src="TimePageItems/Evening-Button.png"></button>
 					<button class="unchecked" type="button"><img src="TimePageItems/Night-Button.png"></button>	
 
@@ -101,7 +101,7 @@
 					<button class="unchecked" type="button"><img src="TimePageItems/Early-Morning-Button.png"></button>
 					<button class="unchecked" type="button"><img src="TimePageItems/Late-Morning-Button.png"></button>
 					<button class="unchecked" type="button"><img src="TimePageItems/Early-Afternoon.png"></button>	
-					<button id="earlyMorning" class="unchecked" type="button"><img src="TimePageItems/Late-Afternoon.png"></button>
+					<button class="unchecked" type="button"><img src="TimePageItems/Late-Afternoon.png"></button>
 					<button class="unchecked" type="button"><img src="TimePageItems/Evening-Button.png"></button>
 					<button class="unchecked" type="button"><img src="TimePageItems/Night-Button.png"></button>		
 				</div>
@@ -145,7 +145,6 @@
 	
 
 	$(".span").click(function() {
-		console.log("Hike-Button");
 		if ($(this).hasClass("unselected")) {
 	  		$(".selected").removeClass("selected").addClass("unselected");
 	  		$(".selectedDate").removeClass("selectedDate").addClass("unselectedDate");
@@ -155,18 +154,29 @@
 		} 	
 	});	
 
-	var button = $(".selectedDate button");
-	button.click(function() {
+	
+	function selectTime(){
+		console.log("clicked!");
+		console.log(this.id);
 		if ($(this).hasClass("unchecked")) {
 	  		$(this).removeClass("unchecked").addClass('checked');
 		} else {
 			$(this).removeClass("checked").addClass("unchecked");
 		}
-	});	
+	};	
+	// var button = $(".selectedDate button");
+	// button.click(function() {
+	// 	console.log("clicked!");
+	// 	if ($(this).hasClass("unchecked")) {
+	//   		$(this).removeClass("unchecked").addClass('checked');
+	// 	} else {
+	// 		$(this).removeClass("checked").addClass("unchecked");
+	// 	}
+	// });	
 	
 
 	$("#nextpage").click(function() {
-		console.log("nextpage clicked");
+		
 		$("#dateSelect").removeClass("pageShow").addClass("pageNotShow");
 		$("#activitySelect").removeClass("pageNotShow").addClass("pageShow");
 	});

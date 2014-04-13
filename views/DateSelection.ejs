@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,12 +13,14 @@
 		font-family: 'Century Gothic', sans-serif;
 		text-align: center;
 		padding-top: 7%;
+		padding-bottom: 7%;
 		background-size: cover;
 	}
 	.h1 {
 		text-align: center;
 		color: white;
 		font-size: 2.3em;
+		clear: both;
 	}
 	.span {
 		color: white;
@@ -62,6 +65,19 @@
 		border: none;
 		background-color: transparent;
 	}
+	#nextpage, #backpage {
+		height: 60px;
+		width: 60px;
+		
+	}
+	#nextpage {
+		float: right;
+		margin-right: 50px;
+	}
+	#backpage {
+		float: left;
+		margin-left: 50px;
+	}
 	/*#earlyMorning{
 		height: 10%;
 		width: 10%;
@@ -76,72 +92,63 @@
 	<body>
 		<div class="container">
 			<div id="dateSelect" class = "pageShow" display="block">
+				<img id="nextpage" src="images/TimePageItems/forward_arrow.png">
 				<p class="h1">Choose Your Free Time</p>
+
+				<!-- <button id="nextpage" type="button"><img src="images/TimePageItems/forward_arrow.png"></button>	 -->
 				<button class="span selected" value="20140412">Today</button>
 				<button class="span unselected" value="20140413">Tomorrow</button>
 				<button class="span unselected" value="20140414">Monday</button>
 				<div id="20140412" class="selectedDate">
-					<button class="time unchecked" type="button"><img src="images/TimePageItems/Early-Morning-Button.png"></button>
-					<button class="time unchecked" type="button"><img src="images/TimePageItems/Late-Morning-Button.png"></button>
-					<button class="time unchecked" type="button"><img src="images/TimePageItems/Early-Afternoon.png"></button>	
-					<button id="earlyMorning" class="time unchecked" type="button"><img src="images/TimePageItems/Late-Afternoon.png"></button>
-					<button class="time unchecked" type="button"><img src="images/TimePageItems/Evening-Button.png"></button>
-					<button class="time unchecked" type="button"><img src="images/TimePageItems/Night-Button.png"></button>	
+					<button class="time unchecked" type="button" value="early_morning"><img src="images/TimePageItems/Early-Morning-Button.png"></button>
+					<button class="time unchecked" type="button" value="late_morning"><img src="images/TimePageItems/Late-Morning-Button.png"></button>
+					<button class="time unchecked" type="button" value="early_afternoon"><img src="images/TimePageItems/Early-Afternoon.png"></button>	
+					<button class="time unchecked" type="button" value="late_afternoon"><img src="images/TimePageItems/Late-Afternoon.png"></button>
+					<button class="time unchecked" type="button" value="evening"><img src="images/TimePageItems/Evening-Button.png"></button>
+					<button class="time unchecked" type="button" value="night"><img src="images/TimePageItems/Night-Button.png"></button>	
 				</div>
 				<div id="20140413" class="unselectedDate">
-					<button class="time unchecked" type="button"><img src="images/TimePageItems/Early-Morning-Button.png"></button>
-					<button class="time unchecked" type="button"><img src="images/TimePageItems/Late-Morning-Button.png"></button>
-					<button class="time unchecked" type="button"><img src="images/TimePageItems/Early-Afternoon.png"></button>	
-					<button id="earlyMorning" class="time unchecked" type="button"><img src="images/TimePageItems/Late-Afternoon.png"></button>
-					<button class="time unchecked" type="button"><img src="images/TimePageItems/Evening-Button.png"></button>
-					<button class="time unchecked" type="button"><img src="images/TimePageItems/Night-Button.png"></button>	
+					<button class="time unchecked" type="button" value="early_morning"><img src="images/TimePageItems/Early-Morning-Button.png"></button>
+					<button class="time unchecked" type="button" value="late_morning"><img src="images/TimePageItems/Late-Morning-Button.png"></button>
+					<button class="time unchecked" type="button" value="early_afternoon"><img src="images/TimePageItems/Early-Afternoon.png"></button>	
+					<button class="time unchecked" type="button" value="late_afternoon"><img src="images/TimePageItems/Late-Afternoon.png"></button>
+					<button class="time unchecked" type="button" value="evening"><img src="images/TimePageItems/Evening-Button.png"></button>
+					<button class="time unchecked" type="button" value="night"><img src="images/TimePageItems/Night-Button.png"></button>
 
 				</div>
 				<div id="20140414" class="unselectedDate">
-					<button class="time unchecked" type="button"><img src="images/TimePageItems/Early-Morning-Button.png"></button>
-					<button class="time unchecked" type="button"><img src="images/TimePageItems/Late-Morning-Button.png"></button>
-					<button class="time unchecked" type="button"><img src="images/TimePageItems/Early-Afternoon.png"></button>	
-					<button id="earlyMorning" class="time unchecked" type="button"><img src="images/TimePageItems/Late-Afternoon.png"></button>
-					<button class="time unchecked" type="button"><img src="images/TimePageItems/Evening-Button.png"></button>
-					<button class="time unchecked" type="button"><img src="images/TimePageItems/Night-Button.png"></button>		
+					<button class="time unchecked" type="button" value="early_morning"><img src="images/TimePageItems/Early-Morning-Button.png"></button>
+					<button class="time unchecked" type="button" value="late_morning"><img src="images/TimePageItems/Late-Morning-Button.png"></button>
+					<button class="time unchecked" type="button" value="early_afternoon"><img src="images/TimePageItems/Early-Afternoon.png"></button>	
+					<button class="time unchecked" type="button" value="late_afternoon"><img src="images/TimePageItems/Late-Afternoon.png"></button>
+					<button class="time unchecked" type="button" value="evening"><img src="images/TimePageItems/Evening-Button.png"></button>
+					<button class="time unchecked" type="button" value="night"><img src="images/TimePageItems/Night-Button.png"></button>		
 				</div>
-				<button id="nextpage" type="button">Submit</button>	
+				
 			</div>
 
 			<div id="activitySelect" class = "pageNotShow">
+				<img id="backpage" src="images/TimePageItems/back_arrow.png">
 				<p class="h1">Choose Your Activity</p>
-				<button class="unchecked" type="button"><img src="images/ActivityPageItems/Walk-the-Dog-Button.png"></button>
-				<button class="unchecked" type="button"><img src="images/ActivityPageItems/Soccer-Button.png"></button>
-				<button class="unchecked" type="button"><img src="images/ActivityPageItems/Sunbathe-Button.png"></button>	
-				<button class="unchecked" type="button"><img src="images/ActivityPageItems/Walk-the-Dog-Button.png"></button>
-				<button class="unchecked" type="button"><img src="images/ActivityPageItems/Swim-Button.png"></button>
-				<button class="unchecked" type="button"><img src="images/ActivityPageItems/Camp-Button.png"></button>	
-				<button class="unchecked" type="button"><img src="images/ActivityPageItems/Walk-the-Dog-Button.png"></button>
-				<button class="unchecked" type="button"><img src="images/ActivityPageItems/Hike-Button.png"></button>
-				<button class="unchecked" type="button"><img src="images/ActivityPageItems/Dine-Out-Button.png"></button>	
-				<button class="unchecked" type="button"><img src="images/ActivityPageItems/Walk-the-Dog-Button.png"></button>
-				<button class="unchecked" type="button"><img src="images/ActivityPageItems/Beach-Button.png"></button>
-				<button class="unchecked" type="button"><img src="images/ActivityPageItems/Fish-Button.png"></button>	
-				<button id="submit" type="button">Submit</button>	
+				<button class="unchecked" type="button" value="walk_the_dog"><img src="images/ActivityPageItems/Walk-the-Dog-Button.png"></button>
+				<button class="unchecked" type="button" value="soccer"><img src="images/ActivityPageItems/Soccer-Button.png"></button>
+				<button class="unchecked" type="button" value="sunbath"><img src="images/ActivityPageItems/Sunbathe-Button.png"></button>	
+				<button class="unchecked" type="button" value="golf"><img src="images/ActivityPageItems/Golf-Button.png"></button>
+				<button class="unchecked" type="button" value="swim"><img src="images/ActivityPageItems/Swim-Button.png"></button>
+				<button class="unchecked" type="button" value="camp"><img src="images/ActivityPageItems/Camp-Button.png"></button>	
+				<button class="unchecked" type="button" value="walk_the_dog"><img src="images/ActivityPageItems/Walk-the-Dog-Button.png"></button>
+				<button class="unchecked" type="button" value="hike"><img src="images/ActivityPageItems/Hike-Button.png"></button>
+				<button class="unchecked" type="button" value="dine_out"><img src="images/ActivityPageItems/Dine-Out-Button.png"></button>	
+				<button class="unchecked" type="button" value="sunbathe"><img src="images/ActivityPageItems/Sunbathe-Button.png" value="beach"></button>
+				<button class="unchecked" type="button" value="beach"><img src="images/ActivityPageItems/Beach-Button.png"></button>
+				<button class="unchecked" type="button" value="fish"><img src="images/ActivityPageItems/Fish-Button.png"></button>	
+				<!-- <button id="backpage" type="button"><img src="images/TimePageItems/back_arrow.png"></button> -->		
 			</div>
 		</div>
 	</body>
 	<script>
 
-	var json = [];
-	var datelist = $("#dateSelect div");
-	for (var i = 0; i < datelist.length; i++) {
-		var obj = new Object();
-		obj.date = datelist[i].id;
-		var time_slot = new Object();
-		var availableTime = $("#dateSelect div .checked");
-		for (var j = 0; j < availableTime.length; j++) {
-			time_slot.time = availableTime[j].innerHTML;
-			time_slot.activity = "none";
-		};
-		obj.time_slot = time_slot;
-		json.push(obj);
-	};
+	
 	
 
 	$(".span").click(function() {
@@ -155,18 +162,51 @@
     		} 	
         });	
 
-        var buttons = $(".time");
-        //for (var i = 0; i < buttons.length; i++) {
-            buttons.on('click', this, function() {
-                console.log('.time onClick');
-                    if ($(this).hasClass("unchecked")) {
-                            $(this).removeClass("unchecked").addClass('checked');
-                    } else {
-                            $(this).removeClass("checked").addClass("unchecked");
-                    }
-            });	
-        //};
+    var buttons = $(".time");
+    buttons.on('click', this, function() {
+            if ($(this).hasClass("unchecked")) {
+                    $(this).removeClass("unchecked").addClass('checked');
+            } else {
+                    $(this).removeClass("checked").addClass("unchecked");
+            }
+    });	
+    
 
+
+    var buttons = $("#activitySelect button");
+    buttons.on('click', this, function() {
+        console.log("time onClick");
+        //alert(0);
+        //var aa = this.value;
+        var json = [];
+        //console.log(aa);
+		var datelist = $("#dateSelect div");
+		//console.log(datelist.length);
+		for (var i = 0; i < datelist.length; i++) {
+			//console.log(datelist[i].id);
+			var obj = new Object();
+			obj.date = datelist[i].id;
+
+			var time_slot = new Object();
+			var availableTime = $(".time.checked");
+			//console.log(availableTime[0].value);
+			for (var j = 0; j < availableTime.length; j++) {
+				time_slot.time = availableTime[j].value;
+				time_slot.activity = this.value;
+				console.log(this.value);
+				//alert(this.value);
+			};
+			obj.time_slot = time_slot;
+			var objString = JSON.stringify(obj);
+			//console.log(objString);
+			json.push(objString);
+		};
+		console.log(json);
+		// var options = {hostname: 'localhost', port: '5000', method: 'post'};
+		// var req = http.request(options);
+	 //  	req.write(json);
+  
+    });
 
 	
 
@@ -176,12 +216,14 @@
 		$("#activitySelect").removeClass("pageNotShow").addClass("pageShow");
 	});
 
+	$("#backpage").click(function() {
+		console.log("backpage clicked");
+		$("#dateSelect").removeClass("pageNotShow").addClass("pageShow");
+		$("#activitySelect").removeClass("pageShow").addClass("pageNotShow");
+	});
 
-	// var options = {hostname: 'localhost', port: '5000', method: 'post'};
-	// var req = http.request(options);
-	// $( "#submit" ).click(function() {
- //  		req.write("jsonString")
-	// });
+
+	
 
 
 	// var xmlhttp = new XMLHttpRequest();
