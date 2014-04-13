@@ -206,13 +206,14 @@
 		// var req = http.request(options);
 	  	// req.write(json);
 	  	$.ajax({
-		    type: 'POST',
-		    url: '/find',
-		    data: {schedule: json},
+		    type: 'GET',
+		    url: '/match',
+		    // data: {schedule: json},
 		    // contentType: "application/json; charset=utf-8",
-		    dataType: "json",
+		    // dataType: "json",
 		    success : function(){
 		        console.log("success");
+		        window.location.href = "http://localhost:3000/match";
 		    },
 		    error : function(){
 		        console.log("error");

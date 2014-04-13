@@ -113,15 +113,21 @@ app.get('/', function(req, res){
 });
 
 app.post('/find', function(req, res) {
-    var schedule = req.body.schedule;
-    var matched_users = [];
-    for(var i = 0; i < schedule.length; i++) {
-        console.log("req schedule: " + i);
+    //var schedule = req.body.schedule;
+    //var matched_users = [];
+    //for(var i = 0; i < schedule.length; i++) {
+    //    console.log("req schedule: " + i);
         //getScheduleMatched(schedule[i], matched_users)();
-    }
-    for(var i = 0; i < schedule.length; i++) {
-        updateSchedule(schedule, i);
-    }
+    //}
+    //for(var i = 0; i < schedule.length; i++) {
+    //    updateSchedule(schedule, i);
+    //}
+
+    //req.on('end', function(err, response) {
+    //  console.log("END REQ");
+    res.redirect('/match');
+    //});
+
 });
 
 app.get('/account', ensureAuthenticated, function(req, res){
@@ -131,8 +137,9 @@ app.get('/account', ensureAuthenticated, function(req, res){
 app.get('/login', function(req, res){
   res.render('login', { user: req.user });
 });
+
 app.get('/match', function(req, res){
-  console.log("MATCH");
+  //console.log("MATCH");
   res.render('match');
 });
 
