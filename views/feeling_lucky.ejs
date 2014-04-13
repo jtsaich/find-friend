@@ -10,7 +10,7 @@
 		margin-left: auto;
 		margin-right: auto;
 		width: 550px;
-		height: 700px;
+		height: 800px;
 		font-family: 'Century Gothic', sans-serif;
 		text-align: center;
 		padding-top: 4%;
@@ -198,9 +198,20 @@
 	});
 
 	$("#backpage").click(function() {
-		console.log("backpage clicked");
-		$("#dateSelect").removeClass("pageNotShow").addClass("pageShow");
-		$("#activitySelect").removeClass("pageShow").addClass("pageNotShow");
+		$.ajax({
+		    type: 'GET',
+		    url: '/match',
+		    // data: {schedule: json},
+		    // contentType: "application/json; charset=utf-8",
+		    // dataType: "json",
+		    success : function(){
+		        console.log("success");
+		        window.location.href = "http://localhost:3000/match";
+		    },
+		    error : function(){
+		        console.log("error");
+		    }
+		});
 	});	
 	</script>
 </html>

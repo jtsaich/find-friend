@@ -10,7 +10,7 @@
 		margin-left: auto;
 		margin-right: auto;
 		width: 550px;
-		height: 700px;
+		height: 800px;
 		font-family: 'Century Gothic', sans-serif;
 		text-align: center;
 		padding-top: 4%;
@@ -110,20 +110,26 @@
 	.subtitle {
 		margin-bottom: 20px;
 	}
+	.activity {
+		font-size: 17px;
+		margin-right: 15%;
+		float: right;
+
+	}
 	</style>
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<body>
 		<div class="container">	
-						
+			<img id="backpage" src="images/TimePageItems/back_arrow.png">
 			<p class="h1">Change Your Mind</p>
 			<p class="subtitle">Didn't see what you like? <br>Checkout other people and their times!</p>
 			<div class="showmatch">
-				<div class="matchPerson"><img src="images/MatchPageItems/Flaky.png"><span>Flacky </span></div>
-				<div class="matchPerson"><img src="images/MatchPageItems/Cuddles.png"><span>Cuddles </span></div>
-				<div class="matchPerson"><img src="images/MatchPageItems/Handy.png"><span>Handy </span></div>
-				<div class="matchPerson"><img src="images/MatchPageItems/Mole.png"><span>Mole </span></div>
-				<div class="matchPerson"><img src="images/MatchPageItems/Nutty.png"><span>Nutty </span></div>
-				<div class="matchPerson"><img src="images/MatchPageItems/Petunia.png"><span>Petunia </span></div>
+				<div class="matchPerson"><img src="images/MatchPageItems/Flaky.png"><span>Flacky </span><span class="activity">Hiking</span></div>
+				<div class="matchPerson"><img src="images/MatchPageItems/Cuddles.png"><span>Cuddles </span><span class="activity">Hiking</span></div>
+				<div class="matchPerson"><img src="images/MatchPageItems/Handy.png"><span>Handy </span><span class="activity">Hiking</span></div>
+				<div class="matchPerson"><img src="images/MatchPageItems/Mole.png"><span>Mole </span><span class="activity">Hiking</span></div>
+				<div class="matchPerson"><img src="images/MatchPageItems/Nutty.png"><span>Nutty </span><span class="activity">Hiking</span></div>
+				<div class="matchPerson"><img src="images/MatchPageItems/Petunia.png"><span>Petunia </span><span class="activity">Hiking</span></div>
 			</div>
 		</div>
 	</body>
@@ -192,9 +198,20 @@
 	});
 
 	$("#backpage").click(function() {
-		console.log("backpage clicked");
-		$("#dateSelect").removeClass("pageNotShow").addClass("pageShow");
-		$("#activitySelect").removeClass("pageShow").addClass("pageNotShow");
+		$.ajax({
+		    type: 'GET',
+		    url: '/match',
+		    // data: {schedule: json},
+		    // contentType: "application/json; charset=utf-8",
+		    // dataType: "json",
+		    success : function(){
+		        console.log("success");
+		        window.location.href = "http://localhost:3000/match";
+		    },
+		    error : function(){
+		        console.log("error");
+		    }
+		});
 	});	
 	</script>
 </html>

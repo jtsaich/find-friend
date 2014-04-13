@@ -10,7 +10,7 @@
 		margin-left: auto;
 		margin-right: auto;
 		width: 550px;
-		height: 700px;
+		height: 850px;
 		font-family: 'Century Gothic', sans-serif;
 		text-align: center;
 		padding-top: 4%;
@@ -112,7 +112,7 @@
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<body>
 		<div class="container">	
-						
+			<img id="backpage" src="images/TimePageItems/back_arrow.png">			
 			<p class="h1">Let's Hang!</p>
 			<div class="showmatch">
 				<div class="matchPerson"><img src="images/MatchPageItems/Flaky.png"><span>Flacky </span></div>
@@ -129,8 +129,8 @@
 				<div class="matchPerson"><img src="images/MatchPageItems/Petunia.png"><span>Petunia </span></div>
 			
 			</div>
-			<button id="changemind"><a href="change_your_mind.html>"> Changing Your Mind?</a></button> 
-			<button id="feellucky"><a href="feeling_lucky.html"></a>Feeling Lucky?</button>
+			<button id="changemind"> Changing Your Mind?</button> 
+			<button id="feellucky">Feeling Lucky?</button>
 		</div>
 	</body>
 	<script>
@@ -200,7 +200,7 @@
 		    // dataType: "json",
 		    success : function(){
 		        console.log("success");
-		        window.location.href = "http://localhost:3000/change_your_mind";
+		        window.location.href = "/change_your_mind";
 		    },
 		    error : function(){
 		        console.log("error");
@@ -217,11 +217,28 @@
 		    // dataType: "json",
 		    success : function(){
 		        console.log("success");
-		        window.location.href = "http://localhost:3000/feeling_lucky";
+		        window.location.href = "/feeling_lucky";
 		    },
 		    error : function(){
 		        console.log("error");
 		    }
-		});	});	
+		});	
+	});
+	$("#backpage").click(function() {
+		$.ajax({
+		    type: 'GET',
+		    url: '/',
+		    // data: {schedule: json},
+		    // contentType: "application/json; charset=utf-8",
+		    // dataType: "json",
+		    success : function(){
+		        console.log("success");
+		        window.location.href = "/";
+		    },
+		    error : function(){
+		        console.log("error");
+		    }
+		});
+	});		
 	</script>
 </html>
