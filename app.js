@@ -131,6 +131,9 @@ app.get('/account', ensureAuthenticated, function(req, res){
 app.get('/login', function(req, res){
   res.render('login', { user: req.user });
 });
+app.get('/match', function(req, res){
+  res.render('match');
+});
 
 // GET /auth/facebook
 //   Use passport.authenticate() as route middleware to authenticate the
