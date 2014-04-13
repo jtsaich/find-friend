@@ -80,6 +80,7 @@ var app = express();
 app.configure(function() {
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
+  app.engine('.html', require('ejs').renderFile);
   app.use(express.logger());
   app.use(express.cookieParser());
   app.use(express.bodyParser());
@@ -94,8 +95,9 @@ app.configure(function() {
 });
 
 
+
 app.get('/', function(req, res){
-  res.render('index', { user: req.user });
+  res.render('DateSelection');
 });
 
 app.get('/account', ensureAuthenticated, function(req, res){
