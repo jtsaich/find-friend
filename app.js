@@ -6,6 +6,15 @@ var express = require('express')
 
 var redisClient = redis.createClient();
 
+if (process.env.REDISTOGO_URL) {
+    var rtg   = require("url").parse(process.env.REDISTOGO_URL);
+    redis = require("redis").createClient(rtg.port, rtg.hostname);
+
+    redis.auth(rtg.auth.split(":")[1]);
+} else {
+  
+}
+
 var FACEBOOK_APP_ID = "738322126201277"
 var FACEBOOK_APP_SECRET = "50d28f4449d561f20fd00bfddbfc1c27";
 
