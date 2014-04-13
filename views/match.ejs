@@ -113,7 +113,7 @@
 	<body>
 		<div class="container">	
 						
-			<p class="h1">Ready To Go!</p>
+			<p class="h1">Let's Hang!</p>
 			<div class="showmatch">
 				<div class="matchPerson"><img src="images/MatchPageItems/Flaky.png"><span>Flacky </span></div>
 				<div class="matchPerson"><img src="images/MatchPageItems/Flaky.png"><span>Flacky </span></div>
@@ -191,16 +191,37 @@
 
 	
 
-	$("#nextpage").click(function() {
-		console.log("nextpage clicked");
-		$("#dateSelect").removeClass("pageShow").addClass("pageNotShow");
-		$("#activitySelect").removeClass("pageNotShow").addClass("pageShow");
+	$("#changemind").click(function() {
+		$.ajax({
+		    type: 'GET',
+		    url: '/change_your_mind',
+		    // data: {schedule: json},
+		    // contentType: "application/json; charset=utf-8",
+		    // dataType: "json",
+		    success : function(){
+		        console.log("success");
+		        window.location.href = "http://localhost:3000/change_your_mind";
+		    },
+		    error : function(){
+		        console.log("error");
+		    }
+		});
 	});
 
-	$("#backpage").click(function() {
-		console.log("backpage clicked");
-		$("#dateSelect").removeClass("pageNotShow").addClass("pageShow");
-		$("#activitySelect").removeClass("pageShow").addClass("pageNotShow");
-	});	
+	$("#feellucky").click(function() {
+		$.ajax({
+		    type: 'GET',
+		    url: '/feeling_lucky',
+		    // data: {schedule: json},
+		    // contentType: "application/json; charset=utf-8",
+		    // dataType: "json",
+		    success : function(){
+		        console.log("success");
+		        window.location.href = "http://localhost:3000/feeling_lucky";
+		    },
+		    error : function(){
+		        console.log("error");
+		    }
+		});	});	
 	</script>
 </html>
