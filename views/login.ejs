@@ -1,1 +1,43 @@
-<a href="/auth/facebook"><img src="login-with-facebook.png" width="154" height="22"></a>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Login</title>
+	</head>
+	<style>
+	.container {
+		background-image:url('images/TimePageItems/Background.png');
+		margin-left: auto;
+		margin-right: auto;
+		width: 550px;
+		height: 1000px;
+		font-family: 'Century Gothic', sans-serif;
+		text-align: center;
+		padding-top: 4%;
+		padding-bottom: 7%;
+		background-size: cover;
+	}
+	.h1 {
+		text-align: center;
+		color: white;
+		font-size: 2.3em;
+		clear: both;
+		border-bottom: 5px solid white;
+	}
+	#facebookButton {
+		height: 30px;
+		width: 50px;
+	}
+	img {
+		height: 50px;
+		width: 300px;
+	}
+	
+	</style>
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<body>
+		<div class="container">	
+			<p class="h1"> Sign Up With Facebook! </p>
+			<a id="facebookButton" href="/auth/facebook"><img src="login-with-facebook.png" width="154" height="22"></a>
+		</div>
+	</body>
+</html>
