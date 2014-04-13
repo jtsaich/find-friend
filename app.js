@@ -47,6 +47,7 @@ passport.use(new FacebookStrategy({
     clientSecret: FACEBOOK_APP_SECRET,
     callbackURL: "http://localhost:3000/auth/facebook/callback"
   },
+  
   function(accessToken, refreshToken, profile, done) {
     console.log("username: " + profile.username);
     console.log("id: " + profile.id);
@@ -138,6 +139,12 @@ app.get('/login', function(req, res){
   res.render('login', { user: req.user });
 });
 
+app.get('/feeling_lucky', function(req, res){
+  res.render('feeling_lucky');
+});
+app.get('/change_your_mind', function(req, res){
+  res.render('change_your_mind');
+});
 app.get('/match', function(req, res){
   //console.log("MATCH");
   res.render('match');
