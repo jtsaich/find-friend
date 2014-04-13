@@ -111,18 +111,11 @@ app.get('/', function(req, res){
 });
 
 app.post('/find', function(req, res) {
-  console.log("FIND");
-  for (var id in req) {
-    console.log("req id:" + id);
-  }
-  console.log("req: " + JSON.stringify(req.body.schedule[0]));
     var schedule = req.body.schedule;
     var matched_users = [];
     for(var i = 0; i < schedule.length; i++) {
         console.log("req schedule: " + i);
         //getScheduleMatched(schedule[i], matched_users)();
-        //res.render('match');
-        //res.redirct('/match');
     }
     for(var i = 0; i < schedule.length; i++) {
         updateSchedule(schedule, i);
@@ -138,6 +131,7 @@ app.get('/login', function(req, res){
 });
 app.get('/match', function(req, res){
   console.log("MATCH");
+  res.render('match');
 });
 
 // GET /auth/facebook
