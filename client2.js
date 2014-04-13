@@ -10,7 +10,8 @@ var monday = new Object();
 var wednesday = new Object();
 var time_slot_arr = [];
 
-monday.date = 201140414;
+monday.date = 20140414;
+wednesday.date = 20140416;
 time_slot_arr.push(new TimeSlot("early_morning", "bbq"));
 time_slot_arr.push(new TimeSlot("late_morning", "bbq"));
 time_slot_arr.push(new TimeSlot("night", "bbq"));
