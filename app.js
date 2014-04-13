@@ -118,17 +118,18 @@ app.post('/find', function(req, res) {
     console.log("req id:" + id);
   }
   console.log("req: " + JSON.stringify(req.body.schedule[0]));
-    var schedule = req.body.schedule;
-    var matched_users = [];
-    for(var i = 0; i < schedule.length; i++) {
-        console.log("req schedule: " + i);
-        //getScheduleMatched(schedule[i], matched_users)();
-        //res.render('match');
-        //res.redirct('/match');
-    }
-    for(var i = 0; i < schedule.length; i++) {
-        updateSchedule(schedule, i);
-    }
+  var schedule = req.body.schedule;
+  var matched_users = [];
+  for(var i = 0; i < schedule.length; i++) {
+      console.log("req schedule: " + i);
+      //getScheduleMatched(schedule[i], matched_users)();
+      //res.render('match');
+      //res.redirct('/match');
+  }
+  for(var i = 0; i < schedule.length; i++) {
+      updateSchedule(schedule, i);
+  } 
+  
 });
 
 app.get('/account', ensureAuthenticated, function(req, res){
@@ -140,6 +141,12 @@ app.get('/login', function(req, res){
 });
 app.get('/match', function(req, res){
   console.log("MATCH");
+});
+app.get('/feeling_lucky', function(req, res){
+  res.render('feeling_lucky');
+});
+app.get('/change_your_mind', function(req, res){
+  res.render('change_your_mind');
 });
 
 // GET /auth/facebook
