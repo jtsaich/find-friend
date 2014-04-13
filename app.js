@@ -111,6 +111,7 @@ app.get('/', function(req, res){
 });
 
 app.post('/find', function(req, res) {
+  console.log("FIND");
   req.on('data', function(data) {
     var schedule = JSON.parse(data);
     var matched_users = [];

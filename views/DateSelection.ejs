@@ -149,7 +149,7 @@
 	<script>
 
 	
-	
+	//var http = require("http");
 
 	$(".span").click(function() {
 		console.log("Hike-Button");
@@ -175,7 +175,7 @@
 
     var buttons = $("#activitySelect button");
     buttons.on('click', this, function() {
-        console.log("time onClick");
+        //console.log("time onClick");
         //alert(0);
         //var aa = this.value;
         var json = [];
@@ -193,7 +193,7 @@
 			for (var j = 0; j < availableTime.length; j++) {
 				time_slot.time = availableTime[j].value;
 				time_slot.activity = this.value;
-				console.log(this.value);
+				//console.log(this.value);
 				//alert(this.value);
 			};
 			obj.time_slot = time_slot;
@@ -202,10 +202,24 @@
 			json.push(objString);
 		};
 		console.log(json);
-		// var options = {hostname: 'localhost', port: '5000', method: 'post'};
+		var options = {hostname: 'localhost', port: '3000', method: 'post'};
 		// var req = http.request(options);
-	 //  	req.write(json);
-  
+	  	// req.write(json);
+	  	$.ajax({
+		    type: 'POST',
+		    url: 'http://localhost:3000/find',
+		    data: json,
+		    // contentType: "application/json; charset=utf-8",
+		    dataType: "json",
+		    //complete: callback,
+		    processData : false,
+		    success : function(){
+		        console.log("toto");
+		    },
+		    error : function(){
+		        console.log("erreur")
+		    }
+		});
     });
 
 	
