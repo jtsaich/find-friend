@@ -174,11 +174,11 @@
 
 
     var buttons = $("#activitySelect button");
+    var json = [];
     buttons.on('click', this, function() {
         //console.log("time onClick");
         //alert(0);
         //var aa = this.value;
-        var json = [];
         //console.log(aa);
 		var datelist = $("#dateSelect div");
 		//console.log(datelist.length);
@@ -197,27 +197,25 @@
 				//alert(this.value);
 			};
 			obj.time_slot = time_slot;
-			var objString = JSON.stringify(obj);
+			// var objString = JSON.stringify(obj);
 			//console.log(objString);
-			json.push(objString);
+			json.push(obj);
 		};
-		console.log(json);
+		console.log(JSON.stringify(json));
 		var options = {hostname: 'localhost', port: '3000', method: 'post'};
 		// var req = http.request(options);
 	  	// req.write(json);
 	  	$.ajax({
 		    type: 'POST',
-		    url: 'http://localhost:3000/find',
-		    data: json,
+		    url: '/find',
+		    data: {schedule: json},
 		    // contentType: "application/json; charset=utf-8",
 		    dataType: "json",
-		    //complete: callback,
-		    processData : false,
 		    success : function(){
-		        console.log("toto");
+		        console.log("success");
 		    },
 		    error : function(){
-		        console.log("erreur")
+		        console.log("error");
 		    }
 		});
     });

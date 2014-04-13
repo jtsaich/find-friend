@@ -112,17 +112,21 @@ app.get('/', function(req, res){
 
 app.post('/find', function(req, res) {
   console.log("FIND");
-  req.on('data', function(data) {
-    var schedule = JSON.parse(data);
+  for (var id in req) {
+    console.log("req id:" + id);
+  }
+  console.log("req: " + JSON.stringify(req.body.schedule[0]));
+    var schedule = req.body.schedule;
     var matched_users = [];
     for(var i = 0; i < schedule.length; i++) {
-        getScheduleMatched(schedule[i], matched_users)();
-        res.render('match', {json: JSON.stringify(matched_users)});
+        console.log("req schedule: " + i);
+        //getScheduleMatched(schedule[i], matched_users)();
+        //res.render('match');
+        //res.redirct('/match');
     }
     for(var i = 0; i < schedule.length; i++) {
         updateSchedule(schedule, i);
     }
-  });
 });
 
 app.get('/account', ensureAuthenticated, function(req, res){
@@ -133,7 +137,7 @@ app.get('/login', function(req, res){
   res.render('login', { user: req.user });
 });
 app.get('/match', function(req, res){
-  res.render('match');
+  console.log("MATCH");
 });
 
 // GET /auth/facebook
@@ -190,12 +194,14 @@ var getScheduleMatched = function(datetime, matched_users) {
       // using datetime_id to get date_time object
       redisClient.hgetall("datetime:" + ret_datetime_id_list[x], function(err, ret_datetime) {
         // go through to find matching time slots
-        for (var i = 0; i < ret_datetime.time_slot.length; i++) {
-          for (var j = 0; j < datetime.time_slot.length; j++) {  
-            if (ret_datetime.time_slot[i] == datetime.time_slot.time_slot[j]) {
-              matched_users.push(datetime.user);
+        if (ret_datetime != null) {
+            for (var i = 0; i < ret_datetime.time_slot.length; i++) {
+              for (var j = 0; j < datetime.time_slot.length; j++) {  
+                if (ret_datetime.time_slot[i] == datetime.time_slot.time_slot[j]) {
+                  matched_users.push(datetime.user);
+                }
+              }
             }
-          }
         }
       });
     }
