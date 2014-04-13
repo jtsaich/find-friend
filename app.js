@@ -132,6 +132,12 @@ app.get('/account', ensureAuthenticated, function(req, res){
 app.get('/login', function(req, res){
   res.render('login', { user: req.user });
 });
+app.get('/feeling_lucky', function(req, res){
+  res.render('feeling_lucky');
+});
+app.get('/change_your_mind', function(req, res){
+  res.render('change_your_mind');
+});
 app.get('/match', function(req, res){
   console.log("MATCH");
   res.render('match');
