@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>DateSelection</title>
+	</head>
+	<style>
+	.container {
+		background-image:url('TimePageItems/Background.png');
+		margin-left: auto;
+		margin-right: auto;
+		width: 550px;
+		font-family: 'Century Gothic', sans-serif;
+		text-align: center;
+		padding-top: 7%;
+		background-size: cover;
+	}
+	.h1 {
+		text-align: center;
+		color: white;
+		font-size: 2.3em;
+	}
+	.span {
+		color: white;
+		font-size: 1.5em;
+		border-radius: 17px;
+		margin: 10px;
+		padding: 8px;
+
+	}
+	.selected {
+		background-color: black;
+	}
+	.unselected {
+		background-color: transparent;
+	}
+	.unchecked {
+		opacity: 0.5;
+	}
+	.checked {
+		opacity: 1;
+	}
+
+	div .selectedDate {
+		display: block;
+	}
+	div .unselectedDate {
+		display: none;
+	}
+	
+	.pageShow {
+		display: block;
+	}
+	.pageNotShow {
+		display: none;
+	}
+
+	span {
+		text-align: center;
+		margin: 5%;
+	}
+	button {
+		border: none;
+		background-color: transparent;
+	}
+	/*#earlyMorning{
+		height: 10%;
+		width: 10%;
+		background: url('TimePageItems/Late-Afternoon.png') no-repeat center center fixed; 
+ 		-webkit-background-size: contain;
+		-moz-background-size: contain;
+		-o-background-size: cover	;
+		background-size: cover;
+	}*/
+	</style>
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<body>
+		<div class="container">
+			<div id="dateSelect" class = "pageShow" display="block">
+				<p class="h1">Choose Your Free Time</p>
+				<button class="span selected" value="20140412">Today</button>
+				<button class="span unselected" value="20140413">Tomorrow</button>
+				<button class="span unselected" value="20140414">Monday</button>
+				<div id="20140412" class="selectedDate">
+					<button class="unchecked" type="button"><img src="TimePageItems/Early-Morning-Button.png"></button>
+					<button class="unchecked" type="button"><img src="TimePageItems/Late-Morning-Button.png"></button>
+					<button class="unchecked" type="button"><img src="TimePageItems/Early-Afternoon.png"></button>	
+					<button id="earlyMorning" class="unchecked" type="button"><img src="TimePageItems/Late-Afternoon.png"></button>
+					<button class="unchecked" type="button"><img src="TimePageItems/Evening-Button.png"></button>
+					<button class="unchecked" type="button"><img src="TimePageItems/Night-Button.png"></button>	
+				</div>
+				<div id="20140413" class="unselectedDate">
+					<button class="unchecked" type="button"><img src="TimePageItems/Early-Morning-Button.png"></button>
+					<button class="unchecked" type="button"><img src="TimePageItems/Late-Morning-Button.png"></button>
+					<button class="unchecked" type="button"><img src="TimePageItems/Early-Afternoon.png"></button>	
+					<button id="earlyMorning" class="unchecked" type="button"><img src="TimePageItems/Late-Afternoon.png"></button>
+					<button class="unchecked" type="button"><img src="TimePageItems/Evening-Button.png"></button>
+					<button class="unchecked" type="button"><img src="TimePageItems/Night-Button.png"></button>	
+
+				</div>
+				<div id="20140414" class="unselectedDate">
+					<button class="unchecked" type="button"><img src="TimePageItems/Early-Morning-Button.png"></button>
+					<button class="unchecked" type="button"><img src="TimePageItems/Late-Morning-Button.png"></button>
+					<button class="unchecked" type="button"><img src="TimePageItems/Early-Afternoon.png"></button>	
+					<button id="earlyMorning" class="unchecked" type="button"><img src="TimePageItems/Late-Afternoon.png"></button>
+					<button class="unchecked" type="button"><img src="TimePageItems/Evening-Button.png"></button>
+					<button class="unchecked" type="button"><img src="TimePageItems/Night-Button.png"></button>		
+				</div>
+				<button id="nextpage" type="button">Submit</button>	
+			</div>
+
+			<div id="activitySelect" class = "pageNotShow">
+				<p class="h1">Choose Your Activity</p>
+				<button class="unchecked" type="button"><img src="ActivityPageItems/Walk-the-Dog-Button.png"></button>
+				<button class="unchecked" type="button"><img src="ActivityPageItems/Soccer-Button.png"></button>
+				<button class="unchecked" type="button"><img src="ActivityPageItems/Sunbathe-Button.png"></button>	
+				<button class="unchecked" type="button"><img src="ActivityPageItems/Walk-the-Dog-Button.png"></button>
+				<button class="unchecked" type="button"><img src="ActivityPageItems/Swim-Button.png"></button>
+				<button class="unchecked" type="button"><img src="ActivityPageItems/Camp-Button.png"></button>	
+				<button class="unchecked" type="button"><img src="ActivityPageItems/Walk-the-Dog-Button.png"></button>
+				<button class="unchecked" type="button"><img src="ActivityPageItems/Hike-Button.png"></button>
+				<button class="unchecked" type="button"><img src="ActivityPageItems/Dine-Out-Button.png"></button>	
+				<button class="unchecked" type="button"><img src="ActivityPageItems/Walk-the-Dog-Button.png"></button>
+				<button class="unchecked" type="button"><img src="ActivityPageItems/Beach-Button.png"></button>
+				<button class="unchecked" type="button"><img src="ActivityPageItems/Fish-Button.png"></button>	
+				<button id="submit" type="button">Submit</button>	
+			</div>
+		</div>
+	</body>
+	<script>
+
+	var json = [];
+	var datelist = $("#dateSelect div");
+	for (var i = 0; i < datelist.length; i++) {
+		var obj = new Object();
+		obj.date = datelist[i].id;
+		var time_slot = new Object();
+		var availableTime = $("#dateSelect div .checked");
+		for (var j = 0; j < availableTime.length; j++) {
+			time_slot.time = availableTime[j].innerHTML;
+			time_slot.activity = "none";
+		};
+		obj.time_slot = time_slot;
+		json.push(obj);
+	};
+	
+
+	$(".span").click(function() {
+		console.log("Hike-Button");
+		if ($(this).hasClass("unselected")) {
+	  		$(".selected").removeClass("selected").addClass("unselected");
+	  		$(".selectedDate").removeClass("selectedDate").addClass("unselectedDate");
+	  		$("#"+this.value).removeClass("unselectedDate").addClass("selectedDate");
+	  		$(this).removeClass("unselected").addClass("selected");
+	  		
+		} 	
+	});	
+
+	var button = $(".selectedDate button");
+	button.click(function() {
+		if ($(this).hasClass("unchecked")) {
+	  		$(this).removeClass("unchecked").addClass('checked');
+		} else {
+			$(this).removeClass("checked").addClass("unchecked");
+		}
+	});	
+	
+
+	$("#nextpage").click(function() {
+		console.log("nextpage clicked");
+		$("#dateSelect").removeClass("pageShow").addClass("pageNotShow");
+		$("#activitySelect").removeClass("pageNotShow").addClass("pageShow");
+	});
+
+
+	// var options = {hostname: 'localhost', port: '5000', method: 'post'};
+	// var req = http.request(options);
+	// $( "#submit" ).click(function() {
+ //  		req.write("jsonString")
+	// });
+
+
+	// var xmlhttp = new XMLHttpRequest();
+	// xmlhttp.onreadystatechange = function() {
+ //  		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+ //    		$(".contain").innerHTML=xmlhttp.responseText;
+ //    	}
+ //    }
+	// xmlhttp.open("GET","ajax_info.txt",true);
+	// xmlhttp.send();
+
+
+	
+	// for (var i = 0; i < button.length; i++) {
+	// 	if(button[i].class = "checked") {
+ //   			button[i].class = "checked";
+	// 	}
+	// };
+// jQuery.data( div, "test", {
+//   first: 16,
+//   last: "pizza!"
+// });
+	
+	</script>
+</html>
