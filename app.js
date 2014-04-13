@@ -4,14 +4,14 @@ var express = require('express')
   , util = require('util')
   , FacebookStrategy = require('passport-facebook').Strategy;
 
-var redisClient = redis.createClient();
+var redisClient;
 
 if (process.env.REDISTOGO_URL) {
     var rtg   = require("url").parse(process.env.REDISTOGO_URL);
-    redis = require("redis").createClient(rtg.port, rtg.hostname);
-
-    redis.auth(rtg.auth.split(":")[1]);
+    redisClient = redis.createClient(rtg.port, rtg.hostname);
+    redisClient.auth(rtg.auth.split(":")[1]);
 } else {
+    redisClient = redis.createClient();
   
 }
 
