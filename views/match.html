@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Match</title>
+	</head>
+	<style>
+	.container {
+		background-image:url('images/TimePageItems/Background.png');
+		margin-left: auto;
+		margin-right: auto;
+		width: 550px;
+		height: 1000px;
+		font-family: 'Century Gothic', sans-serif;
+		text-align: center;
+		padding-top: 4%;
+		padding-bottom: 7%;
+		background-size: cover;
+	}
+	.h1 {
+		text-align: center;
+		color: white;
+		font-size: 2.3em;
+		clear: both;
+		border-bottom: 5px solid white;
+	}
+	.span {
+		color: white;
+		font-size: 1.5em;
+		border-radius: 17px;
+		margin: 10px;
+		padding: 8px;
+
+	}
+	.selected {
+		background-color: black;
+	}
+	.unselected {
+		background-color: transparent;
+	}
+	.unchecked {
+		opacity: 0.5;
+	}
+	.checked {
+		opacity: 1;
+	}
+
+	div .selectedDate {
+		display: block;
+	}
+	div .unselectedDate {
+		display: none;
+	}
+	
+	.pageShow {
+		display: block;
+	}
+	.pageNotShow {
+		display: none;
+	}
+
+	span {
+		text-align: center;
+		margin: 5%;
+		vertical-align: 40px;
+		color: white;
+		font-size: 35px;
+	}
+	button {
+		border: none;
+		background-color: transparent;
+	}
+	#nextpage, #backpage {
+		height: 60px;
+		width: 60px;
+		
+	}
+	#nextpage {
+		float: right;
+		margin-right: 50px;
+	}
+	#backpage {
+		float: left;
+		margin-left: 50px;
+	}
+/*new*/
+	.matchPerson{
+		text-align: left;
+		margin-left: 40px;
+	}
+	.showmatch {
+		height: 83%;
+		overflow: scroll;
+		margin-bottom: 40px;
+	}
+	#changemind {
+		background-color: white;
+	}
+	#feellucky {
+		background-color: #FD5DA7;
+	}
+	#changemind, #feellucky {
+		border-radius: 20px;
+		color: blue;
+		border: 5px solid grey;
+		font-size: 20px;
+		padding: 10px;
+		height: 55px;
+		margin: 20px;
+	}
+	</style>
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<body>
+		<div class="container">	
+						
+			<p class="h1">Ready To Go!</p>
+			<div class="showmatch">
+				<div class="matchPerson"><img src="images/MatchPageItems/Flaky.png"><span>Flacky </span></div>
+				<div class="matchPerson"><img src="images/MatchPageItems/Flaky.png"><span>Flacky </span></div>
+			
+
+				<p class="h1">Up For Something Else?</p>
+			
+				<div class="matchPerson"><img src="images/MatchPageItems/Flaky.png"><span>Flacky </span></div>
+				<div class="matchPerson"><img src="images/MatchPageItems/Flaky.png"><span>Flacky </span></div>
+				<div class="matchPerson"><img src="images/MatchPageItems/Flaky.png"><span>Flacky </span></div>
+				<div class="matchPerson"><img src="images/MatchPageItems/Flaky.png"><span>Flacky </span></div>
+				<div class="matchPerson"><img src="images/MatchPageItems/Flaky.png"><span>Flacky </span></div>
+				<div class="matchPerson"><img src="images/MatchPageItems/Flaky.png"><span>Flacky </span></div>
+				<div class="matchPerson"><img src="images/MatchPageItems/Flaky.png"><span>Flacky </span></div>
+				<div class="matchPerson"><img src="images/MatchPageItems/Flaky.png"><span>Flacky </span></div>
+				<div class="matchPerson"><img src="images/MatchPageItems/Flaky.png"><span>Flacky </span></div>
+				<div class="matchPerson"><img src="images/MatchPageItems/Flaky.png"><span>Flacky </span></div>
+			</div>
+			<button id="changemind">Changing Your Mind?</button> 
+			<button id="feellucky">Feeling Lucky?</button>
+		</div>
+	</body>
+	<script>
+
+	$(".span").click(function() {
+		console.log("Hike-Button");
+		if ($(this).hasClass("unselected")) {
+	  		$(".selected").removeClass("selected").addClass("unselected");
+	  		$(".selectedDate").removeClass("selectedDate").addClass("unselectedDate");
+	  		$("#"+this.value).removeClass("unselectedDate").addClass("selectedDate");
+	  		$(this).removeClass("unselected").addClass("selected");
+	  		
+    		} 	
+        });	
+
+    var buttons = $(".time");
+    buttons.on('click', this, function() {
+            if ($(this).hasClass("unchecked")) {
+                    $(this).removeClass("unchecked").addClass('checked');
+            } else {
+                    $(this).removeClass("checked").addClass("unchecked");
+            }
+    });	
+    
+
+
+    var buttons = $("#activitySelect button");
+    buttons.on('click', this, function() {
+        console.log("time onClick");
+        //alert(0);
+        //var aa = this.value;
+        var json = [];
+        //console.log(aa);
+		var datelist = $("#dateSelect div");
+		//console.log(datelist.length);
+		for (var i = 0; i < datelist.length; i++) {
+			//console.log(datelist[i].id);
+			var obj = new Object();
+			obj.date = datelist[i].id;
+
+			var time_slot = new Object();
+			var availableTime = $(".time.checked");
+			//console.log(availableTime[0].value);
+			for (var j = 0; j < availableTime.length; j++) {
+				time_slot.time = availableTime[j].value;
+				time_slot.activity = this.value;
+				console.log(this.value);
+				//alert(this.value);
+			};
+			obj.time_slot = time_slot;
+			var objString = JSON.stringify(obj);
+			//console.log(objString);
+			json.push(objString);
+		};
+		console.log(json);
+
+    });
+
+	
+
+	$("#nextpage").click(function() {
+		console.log("nextpage clicked");
+		$("#dateSelect").removeClass("pageShow").addClass("pageNotShow");
+		$("#activitySelect").removeClass("pageNotShow").addClass("pageShow");
+	});
+
+	$("#backpage").click(function() {
+		console.log("backpage clicked");
+		$("#dateSelect").removeClass("pageNotShow").addClass("pageShow");
+		$("#activitySelect").removeClass("pageShow").addClass("pageNotShow");
+	});	
+	</script>
+</html>
