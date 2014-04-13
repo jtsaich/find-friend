@@ -1,7 +1,10 @@
 var express = require('express')
+  , redis = require('redis')
   , passport = require('passport')
   , util = require('util')
   , FacebookStrategy = require('passport-facebook').Strategy;
+
+var redisClient = redis.createClient();
 
 var FACEBOOK_APP_ID = "738322126201277"
 var FACEBOOK_APP_SECRET = "50d28f4449d561f20fd00bfddbfc1c27";
@@ -33,6 +36,29 @@ passport.use(new FacebookStrategy({
     callbackURL: "http://localhost:3000/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
+    console.log("username: " + profile.username);
+    console.log("id: " + profile.id);
+    console.log("displayName: " + profile.displayName);
+    redisClient.get("facebook_id:" + profile.id + ":user", function(err, reply) {
+      // acount does not exist
+      if (reply == null) {
+        if (redisClient.incr("global:nextUserId")) {
+          redisClient.get("global:nextUserId", function(err, uid) {
+            redisClient.hmset("user:" + uid, {
+              "username": profile.username, 
+              "facebook_id": profile.id, 
+              "name": profile.displayName, 
+            });
+            redisClient.set("username:" + profile.username + ":user", uid);
+            redisClient.set("facebook_id:" + profile.id + ":user", uid);
+            redisClient.hgetall("user:" + uid, function (err, obj) {
+              console.log("user:" + uid + "->" + obj);
+            });
+
+          });
+        }
+              }
+    });
     // asynchronous verification, for effect...
     process.nextTick(function () {
       
